@@ -8,14 +8,16 @@
   <!-- Google Fonts: Playfair Display (Elegant Serif) & Lora (Readable Serif) -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lora&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome for social icons -->
+  <!-- Font Awesome (kept your kit; added a safe fallback CSS so icons still show even if kit fails) -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- AOS Library (stable version) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
   <style>
     /* Base Reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Lora', serif;
@@ -29,14 +31,13 @@
       flex-direction: column;
     }
 
-    a {
-      color: #b4985a;
-      text-decoration: none;
-      transition: color 0.3s ease;
+       main {
+      flex: 1;
     }
-    a:hover {
-      color: #7f6a35;
-    }
+
+
+    a { color: #b4985a; text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #7f6a35; }
 
     /* Navbar */
     nav.navbar {
@@ -152,8 +153,7 @@
       transition: box-shadow 0.3s ease, transform 0.3s ease;
       cursor: default;
     }
-    .skill-box:hover,
-    .skill-box:focus {
+    .skill-box:hover, .skill-box:focus {
       box-shadow: 0 8px 30px rgb(180 156 115 / 0.25);
       transform: translateY(-6px);
       outline: none;
@@ -164,29 +164,17 @@
       gap: 14px;
       margin-bottom: 12px;
     }
-    .skill-icon {
-      width: 32px;
-      height: 32px;
-      fill: #b4985a;
-      flex-shrink: 0;
-    }
+    .skill-icon { width: 32px; height: 32px; fill: #b4985a; flex-shrink: 0; }
     .skill-title {
       font-family: 'Playfair Display', serif;
       font-weight: 600;
       font-size: 1.3rem;
       color: #5e4d27;
     }
-    .skill-desc {
-      font-size: 1rem;
-      color: #5a5343;
-      line-height: 1.5;
-    }
+    .skill-desc { font-size: 1rem; color: #5a5343; line-height: 1.5; }
 
     /* Experience */
-    .experience-container {
-      max-width: 900px;
-      margin: 0 auto 80px;
-    }
+    .experience-container { max-width: 900px; margin: 0 auto 80px; }
     .job {
       background: #fff;
       padding: 20px 25px;
@@ -195,10 +183,7 @@
       box-shadow: 0 4px 14px rgb(180 156 115 / 0.1);
       transition: box-shadow 0.3s ease, background-color 0.3s ease;
     }
-    .job:hover {
-      box-shadow: 0 8px 30px rgb(180 156 115 / 0.25);
-      background-color: #f7f3e9;
-    }
+    .job:hover { box-shadow: 0 8px 30px rgb(180 156 115 / 0.25); background-color: #f7f3e9; }
     .job h3 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
@@ -206,246 +191,80 @@
       margin-bottom: 8px;
       color: #7f6a35;
     }
-    .company, .dates {
-      font-style: italic;
-      font-size: 0.95rem;
-      color: #8b7c42;
-      margin-bottom: 10px;
-    }
-    .description ul {
-      list-style-type: disc;
-      margin-left: 20px;
-      color: #5a5343;
-      font-size: 1rem;
-    }
-    .description ul li {
-      margin-bottom: 10px;
-    }
+    .company, .dates { font-style: italic; font-size: 0.95rem; color: #8b7c42; margin-bottom: 10px; }
+    .description ul { list-style-type: disc; margin-left: 20px; color: #5a5343; font-size: 1rem; }
+    .description ul li { margin-bottom: 10px; }
 
     /* About Me */
-    #aboutme {
-      max-width: 700px;
-      margin: 0 auto 80px;
-      padding: 0 15px;
-      text-align: center;
-      font-size: 1.15rem;
-      color: #5e5440;
-      font-style: italic;
-      font-weight: 500;
-      line-height: 1.8;
-    }
+    #aboutme { max-width: 700px; margin: 0 auto 80px; padding: 0 15px; text-align: center; font-size: 1.15rem; color: #5e5440; font-style: italic; font-weight: 500; line-height: 1.8; }
 
     /* Portfolio Projects */
-    #portfolio {
-      max-width: 900px;
-      margin: 0 auto 80px;
-      padding: 0 15px;
-    }
+    #portfolio { max-width: 900px; margin: 0 auto 80px; padding: 0 15px; }
     #portfolio .projects-grid {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    max-width: 100%; /* Make sure the container is flexible */
-    overflow-x: auto; /* Allows horizontal scrolling if needed */
-    white-space: nowrap; /* Prevent line breaks */
-    justify-content: start; /* Align items to the left */
-  }
+      display: flex; flex-direction: row; gap: 30px; max-width: 100%; overflow-x: auto; white-space: nowrap; justify-content: start;
+    }
     .project-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgb(180 156 115 / 0.1);
-      overflow: hidden;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
+      background: #fff; border-radius: 12px; box-shadow: 0 4px 14px rgb(180 156 115 / 0.1); overflow: hidden; transition: box-shadow 0.3s ease, transform 0.3s ease; cursor: pointer; min-width: 280px;
     }
-    .project-card:hover,
-    .project-card:focus {
-      box-shadow: 0 10px 30px rgb(180 156 115 / 0.3);
-      transform: translateY(-6px);
-      outline: none;
-    }
-    .project-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      display: block;
-    }
-    .project-info {
-      padding: 16px 18px;
-    }
-    .project-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-      color: #7f6a35;
-    }
-    .project-info p {
-      color: #5a5343;
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-    .project-info a {
-      display: inline-block;
-      margin-top: 12px;
-      font-weight: 600;
-      color: #b4985a;
-      border-bottom: 1.5px solid transparent;
-      transition: border-color 0.3s ease;
-    }
-    .project-info a:hover {
-      border-color: #b4985a;
-    }
+    .project-card:hover, .project-card:focus { box-shadow: 0 10px 30px rgb(180 156 115 / 0.3); transform: translateY(-6px); outline: none; }
+    .project-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .project-info { padding: 16px 18px; }
+    .project-info h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 8px; color: #7f6a35; }
+    .project-info p { color: #5a5343; font-size: 1rem; line-height: 1.4; }
+    .project-info a { display: inline-block; margin-top: 12px; font-weight: 600; color: #b4985a; border-bottom: 1.5px solid transparent; transition: border-color 0.3s ease; }
+    .project-info a:hover { border-color: #b4985a; }
 
     /* Testimonials */
-    #testimonials {
-      background: #f7f3e9;
-      padding: 50px 20px;
-      margin-bottom: 80px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgb(180 156 115 / 0.1);
-    }
-    #testimonials h2 {
-      margin-bottom: 40px;
-    }
-    .testimonial {
-      font-style: italic;
-      font-size: 1.1rem;
-      color: #6e5c2d;
-      margin-bottom: 30px;
-      position: relative;
-      padding-left: 40px;
-    }
-    .testimonial::before {
-      content: "“";
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      color: #b4985a;
-      position: absolute;
-      left: 0;
-      top: -10px;
-      line-height: 1;
-    }
-    .testimonial-author {
-      font-weight: 700;
-      color: #7f6a35;
-      font-size: 1rem;
-      margin-top: 6px;
-      text-align: right;
-    }
+    #testimonials { background: #f7f3e9; padding: 50px 20px; margin-bottom: 80px; max-width: 900px; margin-left: auto; margin-right: auto; border-radius: 12px; box-shadow: 0 4px 14px rgb(180 156 115 / 0.1); }
+    #testimonials h2 { margin-bottom: 40px; }
+    .testimonial { font-style: italic; font-size: 1.1rem; color: #6e5c2d; margin-bottom: 30px; position: relative; padding-left: 40px; }
+    .testimonial::before { content: "“"; font-family: 'Playfair Display', serif; font-size: 3rem; color: #b4985a; position: absolute; left: 0; top: -10px; line-height: 1; }
+    .testimonial-author { font-weight: 700; color: #7f6a35; font-size: 1rem; margin-top: 6px; text-align: right; }
 
     /* Contact Section */
-    #contact {
-      max-width: 600px;
-      margin: 0 auto 80px;
-      padding: 0 15px;
-      text-align: center;
-    }
-    #contact h2 {
-      margin-bottom: 40px;
-    }
-    #contact p {
-      font-size: 1.1rem;
-      color: #5e5440;
-      margin-bottom: 20px;
-    }
-    #contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    #contact input, #contact textarea {
-      padding: 12px 15px;
-      border-radius: 8px;
-      border: 1.5px solid #b4985a;
-      font-size: 1rem;
-      font-family: 'Lora', serif;
-      transition: border-color 0.3s ease;
-    }
-    #contact input:focus, #contact textarea:focus {
-      outline: none;
-      border-color: #7f6a35;
-      box-shadow: 0 0 8px rgb(180 156 115 / 0.5);
-    }
-    #contact button {
-      background-color: #b4985a;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.15rem;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    #contact button:hover {
-      background-color: #7f6a35;
-    }
+    #contact { max-width: 600px; margin: 0 auto 80px; padding: 0 15px; text-align: center; }
+    #contact h2 { margin-bottom: 40px; }
+    #contact p { font-size: 1.1rem; color: #5e5440; margin-bottom: 20px; }
+    #contact form { display: flex; flex-direction: column; gap: 15px; }
+    #contact input, #contact textarea { padding: 12px 15px; border-radius: 8px; border: 1.5px solid #b4985a; font-size: 1rem; font-family: 'Lora', serif; transition: border-color 0.3s ease; }
+    #contact input:focus, #contact textarea:focus { outline: none; border-color: #7f6a35; box-shadow: 0 0 8px rgb(180 156 115 / 0.5); }
+    #contact button { background-color: #b4985a; color: #fff; font-weight: 700; font-size: 1.15rem; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease; }
+    #contact button:hover { background-color: #7f6a35; }
 
     /* Social Icons */
-    .social-icons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    .social-icons a {
-      color: #b4985a;
-      font-size: 1.8rem;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: #7f6a35;
-    }
+    .social-icons { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+    .social-icons a { color: #b4985a; font-size: 1.8rem; transition: color 0.3s ease; }
+    .social-icons a:hover { color: #7f6a35; }
 
     /* Footer */
-    footer {
-      padding: 25px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #a69f8b;
-      background-color: #f2eee3;
-      letter-spacing: 1px;
-      border-top: 1px solid #ddd4bf;
-      margin-top: auto;
-    }
-
+  footer {
+  padding: 25px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #a69f8b;
+  background-color: #f2eee3;
+  letter-spacing: 1px;
+  border-top: 1px solid #ddd4bf;
+  margin-top: auto;
+  position: relative;
+  z-index: 1000; /* keeps it above section overlays */
+}
     /* Responsive */
     @media (max-width: 768px) {
-      nav.navbar {
-        padding: 1rem 1.5rem;
-      }
-      #home h1 {
-        font-size: 2.8rem;
-      }
-      #home p.tagline {
-        font-size: 1.3rem;
-      }
-      .skills-wrapper {
-        grid-template-columns: 1fr;
-      }
-      .experience-container, #portfolio {
-        padding: 0 10px;
-      }
-      #aboutme {
-        font-size: 1rem;
-      }
-      #contact input, #contact textarea {
-        font-size: 0.95rem;
-      }
+      nav.navbar { padding: 1rem 1.5rem; }
+      #home h1 { font-size: 2.8rem; }
+      #home p.tagline { font-size: 1.3rem; }
+      .skills-wrapper { grid-template-columns: 1fr; }
+      .experience-container, #portfolio { padding: 0 10px; }
+      #aboutme { font-size: 1rem; }
+      #contact input, #contact textarea { font-size: 0.95rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="logo" tabindex="0">
-   
-      RD Rae Beckham
-    </div>
+  <nav class="navbar" data-aos="fade-down">
+    <div class="logo" tabindex="0">RD Rae Beckham</div>
     <ul class="nav-items">
       <li><a href="#home">Home</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -456,18 +275,19 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
+  
 
   <section id="home" tabindex="0">
-    <h1>Hi, I’m Rae</h1>
-    <p class="tagline">A web developer.</p>
-    <img class="profile-pic" src="rd.jpg" alt="Portrait of RD Rae Beckham" loading="lazy" />
+    <h1 data-aos="fade-up">Hi, I’m Rae</h1>
+    <p class="tagline" data-aos="fade-up" data-aos-delay="150">A web developer.</p>
+    <img class="profile-pic" src="rd.jpg" alt="Portrait of RD Rae Beckham" loading="lazy" data-aos="zoom-in" data-aos-delay="300" />
   </section>
 
   <section id="skills" tabindex="0">
-    <h2>Skills</h2>
+    <h2 data-aos="fade-up">Skills</h2>
     <div class="skills-wrapper" aria-label="Skills List">
 
-      <div class="skill-box" tabindex="0">
+      <div class="skill-box" tabindex="0" data-aos="fade-up">
         <div class="skill-header">
           <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" fill="#b4985a" viewBox="0 0 24 24"><path d="M3 12l18-12v24L3 12z"/></svg>
           <div class="skill-title">Web Development</div>
@@ -475,7 +295,7 @@
         <div class="skill-desc">Expertise in crafting semantic, accessible, and responsive markup.</div>
       </div>
 
-      <div class="skill-box" tabindex="0">
+      <div class="skill-box" tabindex="0" data-aos="fade-up" data-aos-delay="100">
         <div class="skill-header">
           <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" fill="#b4985a" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
           <div class="skill-title">Video Editing</div>
@@ -483,7 +303,7 @@
         <div class="skill-desc">Superior understanding of film, television, and videography.</div>
       </div>
 
-      <div class="skill-box" tabindex="0">
+      <div class="skill-box" tabindex="0" data-aos="fade-up" data-aos-delay="200">
         <div class="skill-header">
           <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" fill="#b4985a" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="2" ry="2"/></svg>
           <div class="skill-title">Photo Editing</div>
@@ -491,7 +311,7 @@
         <div class="skill-desc">Cropping, resizing, applying filters, retouching, and removing unwanted elements</div>
       </div>
 
-      <div class="skill-box" tabindex="0">
+      <div class="skill-box" tabindex="0" data-aos="fade-up" data-aos-delay="300">
         <div class="skill-header">
           <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" fill="#b4985a" viewBox="0 0 24 24"><path d="M3 12l18-12v24L3 12z"/></svg>
           <div class="skill-title">Sales Techniques</div>
@@ -499,7 +319,7 @@
         <div class="skill-desc">Explaining product value clearly and developing credibility with prospects.</div>
       </div>
 
-       <div class="skill-box" tabindex="0">
+      <div class="skill-box" tabindex="0" data-aos="fade-up" data-aos-delay="400">
         <div class="skill-header">
           <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" fill="#b4985a" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
           <div class="skill-title">Communication</div>
@@ -507,7 +327,7 @@
         <div class="skill-desc">Creation of meaning through communication, vital for collaboration and success.</div>
       </div>
 
-      <div class="skill-box" tabindex="0">
+      <div class="skill-box" tabindex="0" data-aos="fade-up" data-aos-delay="500">
         <div class="skill-header">
           <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" fill="#b4985a" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
           <div class="skill-title">Troubleshooting</div>
@@ -519,44 +339,44 @@
   </section>
 
   <section id="experience" tabindex="0">
-    <h2>Experience</h2>
+    <h2 data-aos="fade-up">Experience</h2>
     <div class="experience-container" aria-label="Work Experience">
 
-      <div class="job" tabindex="0">
+      <div class="job" tabindex="0" data-aos="fade-up">
         <h3>IT SALES REPRESENTATIVE</h3>
         <div class="company">RACI Computer Store</div>
         <div class="dates">2005 - 2006</div>
         <div class="description">
           <ul>
             <li>I deal with and sell computers and computer hardware to corporate clients or walk-ins.</li>
-          <li>I visit schools to introduce our company, products, and services.</li>
-          <li>I inform them about potential problems they might encounter and make myself available whenever they need my help.</li>
+            <li>I visit schools to introduce our company, products, and services.</li>
+            <li>I inform them about potential problems they might encounter and make myself available whenever they need my help.</li>
           </ul>
         </div>
       </div>
 
-      <div class="job" tabindex="0">
+      <div class="job" tabindex="0" data-aos="fade-up" data-aos-delay="100">
         <h3>OFFICER IN CHARGE (Service Solutions Multi Purpose Company)</h3>
         <div class="company">MxMemoxpress Cebu</div>
         <div class="dates">Nov. 7, 2011 – Sept. 28, 2015</div>
         <div class="description">
           <ul>
-          <li>Responsible for overseeing the day-to-day operations of the company or a specific department (e.g., sales, customer support, or technical services)</li>
-          <li>Ensured that processes run smoothly, equipment was functioning properly, and that team members fulfilled their roles effectively.</li>
-          <li>Supervised team performance by setting clear objectives, monitoring productivity, and providing support or training to staff.</li>
+            <li>Responsible for overseeing the day-to-day operations of the company or a specific department (e.g., sales, customer support, or technical services)</li>
+            <li>Ensured that processes run smoothly, equipment was functioning properly, and that team members fulfilled their roles effectively.</li>
+            <li>Supervised team performance by setting clear objectives, monitoring productivity, and providing support or training to staff.</li>
           </ul>
         </div>
       </div>
 
-       <div class="job" tabindex="0">
+      <div class="job" tabindex="0" data-aos="fade-up" data-aos-delay="200">
         <h3>TECHNICAL SUPPORT REPRESENTATIVE</h3>
         <div class="company">TELEPERFORMANCE</div>
         <div class="dates">Sept. 17, 2019 – Oct. 8, 2024</div>
         <div class="description">
           <ul>
-         <li>Responsible for diagnosing and resolving technical issues faced by customers.</li>
-          <li>Provided assistance during the installation and setup of security devices.</li>
-          <li>I inform them about potential problems they might encounter and make myself available whenever they need my help.</li>
+            <li>Responsible for diagnosing and resolving technical issues faced by customers.</li>
+            <li>Provided assistance during the installation and setup of security devices.</li>
+            <li>I inform them about potential problems they might encounter and make myself available whenever they need my help.</li>
           </ul>
         </div>
       </div>
@@ -565,10 +385,10 @@
   </section>
 
   <section id="portfolio" tabindex="0">
-    <h2>Portfolio</h2>
+    <h2 data-aos="fade-up">Portfolio</h2>
     <div class="projects-grid" aria-label="Project portfolio">
 
-      <article class="project-card" tabindex="0">
+      <article class="project-card" tabindex="0" data-aos="zoom-in">
         <img src="https://via.placeholder.com/400x160.png?text=Project+1" alt="Screenshot of Project 1" loading="lazy" />
         <div class="project-info">
           <h3>Project One</h3>
@@ -577,7 +397,7 @@
         </div>
       </article>
 
-      <article class="project-card" tabindex="0">
+      <article class="project-card" tabindex="0" data-aos="zoom-in" data-aos-delay="100">
         <img src="https://via.placeholder.com/400x160.png?text=Project+2" alt="Screenshot of Project 2" loading="lazy" />
         <div class="project-info">
           <h3>Project Two</h3>
@@ -586,7 +406,7 @@
         </div>
       </article>
 
-      <article class="project-card" tabindex="0">
+      <article class="project-card" tabindex="0" data-aos="zoom-in" data-aos-delay="200">
         <img src="https://via.placeholder.com/400x160.png?text=Project+3" alt="Screenshot of Project 3" loading="lazy" />
         <div class="project-info">
           <h3>Project Three</h3>
@@ -599,44 +419,53 @@
   </section>
 
   <section id="testimonials" tabindex="0" aria-label="Testimonials">
-    <h2>Testimonials</h2>
-    <blockquote class="testimonial" tabindex="0">
+    <h2 data-aos="fade-up">Testimonials</h2>
+    <blockquote class="testimonial" tabindex="0" data-aos="fade-up">
       "RD Rae Beckham is an outstanding developer — attentive to detail and a pleasure to work with!"
       <div class="testimonial-author">— Jane Smith, Project Manager</div>
     </blockquote>
-    <blockquote class="testimonial" tabindex="0">
+    <blockquote class="testimonial" tabindex="0" data-aos="fade-up" data-aos-delay="100">
       "Delivering beyond expectations every time, with clean and maintainable code."
       <div class="testimonial-author">— Michael Johnson, Client</div>
     </blockquote>
   </section>
 
   <section id="aboutme" tabindex="0">
-    <h2>About Me</h2>
-    <p>Passionate about blending creativity with technology, I build websites and apps that look beautiful and function flawlessly. With a keen eye for detail and a commitment to clean code, I help brands tell their story online.</p>
+    <h2 data-aos="fade-up">About Me</h2>
+    <p data-aos="fade-right">Passionate about blending creativity with technology, I build websites and apps that look beautiful and function flawlessly. With a keen eye for detail and a commitment to clean code, I help brands tell their story online.</p>
   </section>
+
   <section id="contact" tabindex="0">
-  <h2>Contact Me</h2>
-  <p>Feel free to reach out via email or social media. I’d love to connect!</p>
+    <h2 data-aos="fade-up">Contact Me</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Feel free to reach out via email or social media. I’d love to connect!</p>
 
-<form action="https://formspree.io/f/xdklnwqk" method="POST">
-  <input type="text" name="name" placeholder="Your name" required>
-  <input type="email" name="_replyto" placeholder="Your email" required>
-  <textarea name="message" placeholder="Your message" required></textarea>
-  <button type="submit">Send</button>
-</form>
+    <form action="https://formspree.io/f/xdklnwqk" method="POST" data-aos="fade-up" data-aos-delay="200">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="_replyto" placeholder="Your email" required>
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
 
-  <div class="social-icons" aria-label="Social media links">
-    <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-  </div>
-</section>
+    <div class="social-icons" aria-label="Social media links" data-aos="fade-up" data-aos-delay="300">
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+  </section>
 
-  <footer>
+  <footer data-aos="fade-up">
     &copy; 2025 RD Rae Beckham — All rights reserved
   </footer>
 
+  <!-- AOS Script (init at end of body) -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+  duration: 900,
+  once: false,  // animate again whenever section comes into view
+  offset: 120,
+  easing: 'ease-out-cubic'
+});
+  </script>
 </body>
 </html>
-
-
